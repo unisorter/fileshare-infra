@@ -25,10 +25,6 @@ module "s3_bucket" {
 
   attach_deny_insecure_transport_policy = true
 
-  tags = {
-    Owner = "Anton"
-  }
-
   versioning = {
     enabled = true
   }
