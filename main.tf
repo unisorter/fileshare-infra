@@ -18,6 +18,6 @@ terraform {
 }
 
 module "s3" {
-   source = "./s3"
-   bucket_name = "unisorter-file-share"
+  source      = "./s3"
+  bucket_name = "unisorter-file-share"
 }
