@@ -1,5 +1,3 @@
-
-
 terraform {
   required_providers {
     aws = {
@@ -17,4 +15,9 @@ terraform {
       name = "fileshare-infra"
     }
   }
+}
+
+module "s3" {
+  source      = "./s3"
+  bucket_name = "unisorter-file-share"
 }
