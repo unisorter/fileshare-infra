@@ -21,3 +21,8 @@ module "s3" {
   source      = "./s3"
   bucket_name = "unisorter-file-share"
 }
+
+module "lambda_presign_upload_url" {
+  source      = "./lambda"
+  S3_BUCKET = "unisorter-file-share"
+}
