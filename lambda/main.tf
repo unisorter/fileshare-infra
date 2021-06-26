@@ -6,7 +6,7 @@ module "lambda_function" {
   handler       = "index.lambda_handler"
   runtime       = "python3.8"
 
-  source_path = "${path.module}/lambda-function.py"
+  source_path = "${path.module}/pre-signed-url"
 
     environment_variables = {
       S3_BUCKET = var.S3_BUCKET
