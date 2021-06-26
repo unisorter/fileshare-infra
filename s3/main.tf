@@ -21,6 +21,7 @@ module "log_bucket" {
   block_public_policy     = true
   ignore_public_acls      = true
   restrict_public_buckets = true
+  
 }
 
 module "s3_bucket" {
@@ -69,6 +70,7 @@ module "s3_bucket" {
       noncurrent_version_expiration = {
         days = 30
       }
+      
     }
   ]
 
