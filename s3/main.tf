@@ -83,16 +83,6 @@ module "s3_bucket" {
     }
   }
 
-  object_lock_configuration = {
-    object_lock_enabled = "Enabled"
-    rule = {
-      default_retention = {
-        mode = "GOVERNANCE"
-        days = 1
-      }
-    }
-  }
-
   # S3 bucket-level Public Access Block configuration
   block_public_acls       = true
   block_public_policy     = true
