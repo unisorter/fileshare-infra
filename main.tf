@@ -23,6 +23,6 @@ module "s3" {
 }
 
 module "lambda_presign_upload_url" {
-  source      = "./lambda"
+  source    = "./lambda"
   S3_BUCKET = "unisorter-file-share"
 }
