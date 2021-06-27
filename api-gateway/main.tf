@@ -25,6 +25,7 @@ module "api_gateway" {
   name          = "${random_pet.this.id}-http"
   description   = "My awesome HTTP API Gateway"
   protocol_type = "HTTP"
+  create_api_domain_name = false
 
   cors_configuration = {
     allow_headers = ["content-type", "x-amz-date", "authorization", "x-api-key", "x-amz-security-token", "x-amz-user-agent"]
@@ -37,8 +38,8 @@ module "api_gateway" {
 #     truststore_version = aws_s3_bucket_object.truststore.version_id
 #   }
 
-  domain_name                 = "sydney-api.unisorter.com"
-  domain_name_certificate_arn = "arn:aws:acm:ap-southeast-2:797849036607:certificate/fd491cb7-9775-4b91-9f04-9f43836ec22b"
+  # domain_name                 = local.domain_name
+  # domain_name_certificate_arn = module.acm.acm_certificate_arn
 
 #   default_stage_access_log_destination_arn = aws_cloudwatch_log_group.logs.arn
 #   default_stage_access_log_format          = "$context.identity.sourceIp - - [$context.requestTime] \"$context.httpMethod $context.routeKey $context.protocol\" $context.status $context.responseLength $context.requestId $context.integrationErrorMessage"
