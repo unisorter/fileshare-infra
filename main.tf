@@ -26,3 +26,8 @@ module "lambda_presign_upload_url" {
   source    = "./lambda"
   S3_BUCKET = "unisorter-file-share"
 }
+
+module "api_presign_upload_url" {
+  source     = "./api-gateway"
+  lambda_arn = module.lambda_presign_upload_url.arn
+}
