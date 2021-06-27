@@ -10,10 +10,10 @@
 #   skip_requesting_account_id = false
 # }
 
-locals {
-  domain_name = "terraform-aws-modules.modules.tf" # trimsuffix(data.aws_route53_zone.this.name, ".")
-  subdomain   = "complete-http"
-}
+# locals {
+#   domain_name = "terraform-aws-modules.modules.tf" # trimsuffix(data.aws_route53_zone.this.name, ".")
+#   subdomain   = "complete-http"
+# }
 
 ###################
 # HTTP API Gateway
@@ -37,8 +37,8 @@ module "api_gateway" {
 #     truststore_version = aws_s3_bucket_object.truststore.version_id
 #   }
 
-  domain_name                 = local.domain_name
-  domain_name_certificate_arn = "arn:aws:acm:us-east-1:797849036607:certificate/f0ca6873-a42a-4037-b9a0-15370294a239"
+  domain_name                 = "sydney-api.unisorter.com"
+  domain_name_certificate_arn = "arn:aws:acm:ap-southeast-2:797849036607:certificate/fd491cb7-9775-4b91-9f04-9f43836ec22b"
 
 #   default_stage_access_log_destination_arn = aws_cloudwatch_log_group.logs.arn
 #   default_stage_access_log_format          = "$context.identity.sourceIp - - [$context.requestTime] \"$context.httpMethod $context.routeKey $context.protocol\" $context.status $context.responseLength $context.requestId $context.integrationErrorMessage"
