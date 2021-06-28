@@ -1,10 +1,10 @@
 module "api_gateway" {
   source = "terraform-aws-modules/apigateway-v2/aws"
 
-  name          = "${var.name}-http-api" 
-  description   = "API Gatway_2 API to generate presigned URL for upload object to S3 bucket"
-  protocol_type = "HTTP"
-  create_api_domain_name = false
+  name                             = "${var.name}-http-api"
+  description                      = "API Gatway_2 API to generate presigned URL for upload object to S3 bucket"
+  protocol_type                    = "HTTP"
+  create_api_domain_name           = false
   create_default_stage_api_mapping = false
 
   cors_configuration = {
@@ -27,8 +27,8 @@ module "api_gateway" {
       lambda_arn             = module.lambda_function.lambda_function_arn
       payload_format_version = "2.0"
       timeout_milliseconds   = 3000
-    #   authorization_type     = "JWT"
-    #   authorizer_id          = aws_apigatewayv2_authorizer.some_authorizer.id
+      #   authorization_type     = "JWT"
+      #   authorizer_id          = aws_apigatewayv2_authorizer.some_authorizer.id
     }
 
   }
@@ -40,7 +40,7 @@ module "api_gateway" {
 
 resource "aws_cloudwatch_log_group" "logs" {
   name = "${var.name}-http-api-logs"
-  
+
   tags = {
     Stack = "Unisorter"
   }
@@ -48,11 +48,11 @@ resource "aws_cloudwatch_log_group" "logs" {
 
 module "lambda_function" {
 
-  source = "./lambda"
-   name = var.name
-   s3_bucket = var.s3_bucket
-   api_gateway_execution_arn = module.api_gateway.apigatewayv2_api_execution_arn
-  
+  source                    = "./lambda"
+  name                      = var.name
+  s3_bucket                 = var.s3_bucket
+  api_gateway_execution_arn = module.api_gateway.apigatewayv2_api_execution_arn
+
 }
 
 #############################

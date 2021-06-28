@@ -2,11 +2,11 @@ locals {
   bucket_name = var.bucket_name
 }
 
-resource "aws_kms_key" "objects" {
-  description             = "KMS key is used to encrypt bucket objects"
-  deletion_window_in_days = 30
-  enable_key_rotation = true
-}
+# resource "aws_kms_key" "objects" {
+#   description             = "KMS key is used to encrypt bucket objects"
+#   deletion_window_in_days = 30
+#   enable_key_rotation     = true
+# }
 
 module "log_bucket" {
   source = "terraform-aws-modules/s3-bucket/aws"
@@ -21,7 +21,7 @@ module "log_bucket" {
   block_public_policy     = true
   ignore_public_acls      = true
   restrict_public_buckets = true
-  
+
 }
 
 module "s3_bucket" {
@@ -70,18 +70,18 @@ module "s3_bucket" {
       noncurrent_version_expiration = {
         days = 30
       }
-      
+
     }
   ]
 
-  server_side_encryption_configuration = {
-    rule = {
-      apply_server_side_encryption_by_default = {
-        kms_master_key_id = aws_kms_key.objects.arn
-        sse_algorithm     = "aws:kms"
-      }
-    }
-  }
+  # server_side_encryption_configuration = {
+  #   rule = {
+  #     apply_server_side_encryption_by_default = {
+  #       kms_master_key_id = aws_kms_key.objects.arn
+  #       sse_algorithm     = "aws:kms"
+  #     }
+  #   }
+  # }
 
   # S3 bucket-level Public Access Block configuration
   block_public_acls       = true

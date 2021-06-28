@@ -23,7 +23,7 @@ module "s3" {
 }
 
 module "api_presigned_upload_url" {
-  source     = "./api-gateway/http-presigned-upload-url"
+  source    = "./api-gateway/http-presigned-upload-url"
   s3_bucket = "unisorter-file-share"
-  name = "generate-presigned-upload-url"
+  name      = "generate-presigned-upload-url"
 }

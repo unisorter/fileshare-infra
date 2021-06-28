@@ -1,5 +1,5 @@
 module "lambda_function" {
-  source = "terraform-aws-modules/lambda/aws"
+  source  = "terraform-aws-modules/lambda/aws"
   version = "~> 2.0"
 
   function_name = var.name
@@ -10,8 +10,8 @@ module "lambda_function" {
 
   source_path = "${path.module}/pre-signed-upload-url"
 
-    environment_variables = {
-      S3_BUCKET = var.s3_bucket
+  environment_variables = {
+    S3_BUCKET = var.s3_bucket
   }
 
   allowed_triggers = {
