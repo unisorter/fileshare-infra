@@ -6,7 +6,7 @@ module "lambda_function" {
   description   = "Lambda function to create presigned url for uploading object to s3 bucket"
   handler       = "index.lambda_handler"
   runtime       = "python3.8"
-
+  publish = true
 
   source_path = "${path.module}/pre-signed-upload-url"
 
