@@ -26,6 +26,7 @@ module "api_gateway" {
   description   = "My awesome HTTP API Gateway"
   protocol_type = "HTTP"
   create_api_domain_name = false
+  create_default_stage_api_mapping = false
 
   cors_configuration = {
     allow_headers = ["content-type", "x-amz-date", "authorization", "x-api-key", "x-amz-security-token", "x-amz-user-agent"]
@@ -41,8 +42,8 @@ module "api_gateway" {
   # domain_name                 = local.domain_name
   # domain_name_certificate_arn = module.acm.acm_certificate_arn
 
-#   default_stage_access_log_destination_arn = aws_cloudwatch_log_group.logs.arn
-#   default_stage_access_log_format          = "$context.identity.sourceIp - - [$context.requestTime] \"$context.httpMethod $context.routeKey $context.protocol\" $context.status $context.responseLength $context.requestId $context.integrationErrorMessage"
+  default_stage_access_log_destination_arn = aws_cloudwatch_log_group.logs.arn
+  default_stage_access_log_format          = "$context.identity.sourceIp - - [$context.requestTime] \"$context.httpMethod $context.routeKey $context.protocol\" $context.status $context.responseLength $context.requestId $context.integrationErrorMessage"
 
 #   default_route_settings = {
 #     detailed_metrics_enabled = true
@@ -188,9 +189,9 @@ resource "random_pet" "this" {
   length = 2
 }
 
-# resource "aws_cloudwatch_log_group" "logs" {
-#   name = random_pet.this.id
-# }
+resource "aws_cloudwatch_log_group" "logs" {
+  name = random_pet.this.id
+}
 
 #############################################
 # Using packaged function from Lambda module
