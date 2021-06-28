@@ -39,7 +39,7 @@ module "api_gateway" {
 }
 
 resource "aws_cloudwatch_log_group" "logs" {
-  name = "${var.name}-http-api-logs"
+  name = "/aws/api-gaeway/${var.name}"
 
   tags = {
     Stack = "Unisorter"
