@@ -23,7 +23,7 @@ module "api_gateway" {
   }
 
   integrations = {
-    "GET /api/file-share/upload" = {
+    "GET /" = {
       lambda_arn             = module.lambda_function.lambda_function_arn
       payload_format_version = "2.0"
       timeout_milliseconds   = 3000
