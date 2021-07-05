@@ -28,4 +28,13 @@ module "lambda_function" {
   tags = {
     Stack = "Unisorter"
   }
+
+  attach_policy_statements = true
+  policy_statements = {
+    s3_put = {
+      effect    = "Allow",
+      actions   = ["s3:HeadObject", "s3:PutObject"],
+      resources = ["arn:aws:s3:::${var.s3_bucket}/*"]
+    }
+  }
 }
