@@ -4,8 +4,8 @@ module "lambda_function" {
 
   function_name = var.name
   description   = "Lambda function to create presigned url for uploading object to s3 bucket"
-  handler       = "index.lambda_handler"
-  runtime       = "python3.8"
+  handler       = "index.handler"
+  runtime       = "nodejs12.x"
   publish = true
 
   source_path = "${path.module}/pre-signed-upload-url"
